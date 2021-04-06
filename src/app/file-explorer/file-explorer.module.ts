@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { MatToolbarModule } from '@angular/material/toolbar'
-import { FlexLayoutModule } from '@angular/flex-layout'
 import { MatIconModule } from '@angular/material/icon'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatMenuModule } from '@angular/material/menu'
@@ -16,7 +15,6 @@ import { FileExplorerComponent } from './file-explorer.component'
   imports: [
     CommonModule,
     MatToolbarModule,
-    FlexLayoutModule,
     MatIconModule,
     MatGridListModule,
     MatMenuModule,
