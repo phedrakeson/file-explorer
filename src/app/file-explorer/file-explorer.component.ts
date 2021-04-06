@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { FileElement } from './model/file-element';
 
 @Component({
@@ -36,6 +37,22 @@ export class FileExplorerComponent implements OnInit {
 
   public navigateUp() {
     this.navigatedUp.emit();
+  }
+
+  public moveElement(element: FileElement, moveTo: FileElement) {
+    this.elementMoved.emit({ element: element, moveTo: moveTo });
+  }
+
+  public openNewFolderDialog() {
+
+  }
+
+  public openRenameDialog(element: FileElement) {
+
+  }
+
+  public openMenu(event: MouseEvent, viewChild: MatMenuTrigger) {
+    
   }
 
 }
