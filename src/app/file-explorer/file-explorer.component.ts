@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { FileElement } from './model/file-element';
 
 @Component({
   selector: 'app-file-explorer',
@@ -7,9 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileExplorerComponent implements OnInit {
 
+  @Input() fileElements: FileElement[] = [];
+  @Input() canNavigateUp: string = '';
+  @Input() path: string = '';
+
+  @Output() folderAdded = new EventEmitter<{ name: string }>();
+  @Output() elementRemoved = new EventEmitter<FileElement>();
+  @Output() elementRenamed = new EventEmitter<FileElement>();
+  @Output() elementMoved = new EventEmitter< { element: FileElement, moveTo: FileElement } >();
+  @Output() navigatedDown = new EventEmitter<FileElement>();
+  @Output() navigatedUp = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public deleteElement(element: FileElement) {
+    this.elementRemoved.emit(element);
+  }
+
+  public navigate(element: FileElement) {
+    if(element.isFolder) {
+      this.navigatedDown.emit(element);
+    }
+  }
+
+  public navigateUp() {
+    this.navigatedUp.emit();
   }
 
 }

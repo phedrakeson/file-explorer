@@ -9,7 +9,9 @@ import { MatDialogModule } from '@angular/material/dialog'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { FormsModule } from '@angular/forms'
-import { FileExplorerComponent } from './file-explorer.component'
+import { FileExplorerComponent } from './file-explorer.component';
+import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
+import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component'
 
 @NgModule({
   imports: [
@@ -24,7 +26,7 @@ import { FileExplorerComponent } from './file-explorer.component'
     FormsModule,
     MatButtonModule,
   ],
-  declarations: [FileExplorerComponent],
+  declarations: [FileExplorerComponent, NewFolderDialogComponent, RenameDialogComponent],
   exports: [FileExplorerComponent],
   entryComponents: [],
 })
