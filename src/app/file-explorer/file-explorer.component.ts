@@ -1,5 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
+import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { FileElement } from './model/file-element';
 
 @Component({
@@ -20,7 +23,7 @@ export class FileExplorerComponent implements OnInit {
   @Output() navigatedDown = new EventEmitter<FileElement>();
   @Output() navigatedUp = new EventEmitter();
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -44,11 +47,26 @@ export class FileExplorerComponent implements OnInit {
   }
 
   public openNewFolderDialog() {
-
+    let dialogRef = this.dialog.open(NewFolderDialogComponent);
+    dialogRef.afterClosed().subscribe( data => {
+      if (data) {
+        this.folderAdded.emit({ name: data });
+      } else {
+        throw new Error('Um erro inesperado ocorreu.');
+      }
+    });
   }
 
   public openRenameDialog(element: FileElement) {
-
+    let dialogRef = this.dialog.open(RenameDialogComponent);
+    dialogRef.afterClosed().subscribe(data => {
+      if(data) {
+        element.name = data;
+        this.elementRenamed.emit(element);
+      } else {
+        throw new Error('Um erro inesperado ocorreu.');
+      }
+    });
   }
 
   public openMenu(event: MouseEvent, viewChild: MatMenuTrigger) {

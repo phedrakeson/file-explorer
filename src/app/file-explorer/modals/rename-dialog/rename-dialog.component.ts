@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RenameDialogComponent implements OnInit {
 
+  folderName: string = '';
+
   constructor() { }
 
   ngOnInit(): void {

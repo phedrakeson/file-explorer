@@ -1,1 +1,12 @@
-<p>new-folder-dialog works!</p>
+<h1 mat-dialog-title>Criar uma nova pasta</h1>
+
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nome da nova pasta" [(ngModel)]="folderName">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button [mat-dialog-close]="folderName" color="primary">Confirmar</button>
+</mat-dialog-actions>

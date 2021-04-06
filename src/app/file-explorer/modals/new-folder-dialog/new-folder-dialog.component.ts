@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewFolderDialogComponent implements OnInit {
 
+  folderName: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
