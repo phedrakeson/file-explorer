@@ -70,7 +70,8 @@ export class FileExplorerComponent implements OnInit {
   }
 
   public openMenu(event: MouseEvent, viewChild: MatMenuTrigger) {
-    
+    event.preventDefault();
+    viewChild.openMenu();
   }
 
 }
