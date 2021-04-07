@@ -1,5 +1,6 @@
 export class FileElement {
-  id?: string = ''
+  id?: any = ''
   isFolder: boolean = true
-  name: string = ''
+  name: string  = ''
+  parent: any = '';
 }
